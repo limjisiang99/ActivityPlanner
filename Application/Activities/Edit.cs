@@ -6,7 +6,7 @@ namespace Application.Activities{
     public class Edit{
         public class Command : IRequest
         {
-            public Activity Activity {get; set;}
+            public Activity? Activity {get; set;}
         }
         public class Handler : IRequestHandler<Command>
         {
@@ -19,7 +19,7 @@ namespace Application.Activities{
             }
              public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
              {
-                var activity = await _context.Activities.FindAsync(request.Activity.Id);
+                var activity = await _context.Activities.FindAsync(request.Activity?.Id);
 
                 _mapper.Map(request.Activity, activity);
 
