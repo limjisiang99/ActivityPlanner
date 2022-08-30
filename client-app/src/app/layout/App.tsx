@@ -12,6 +12,8 @@ function App() {
     Activity | undefined
   >(undefined);
 
+  const [editMode, setEditMode] = useState<boolean>(false);
+
   useEffect(() => {
     axios
       .get<Activity[]>("http://localhost:5000/api/activities")
@@ -23,21 +25,46 @@ function App() {
 
   const HandleSelectActivity = (id: String) => {
     setSelectedActivity(activities.find((x) => x.id === id));
+    setEditMode(false);
   };
 
   const HandleCancelActivity = () => {
     setSelectedActivity(undefined);
   };
 
+  const HandleFormOpen = (id?: String) => {
+    id ? HandleSelectActivity(id) : HandleCancelActivity();
+    setEditMode(true);
+  };
+
+  const HandleFormClose = () => {
+    setEditMode(false);
+  };
+
+  const HandleCreatOrEditActivity = (activity: Activity) => {
+    activity.id
+      ? setActivities([
+          ...activities.filter((x) => x.id !== activity.id),
+          activity,
+        ])
+      : setActivities([...activities, activity]);
+    setEditMode(false);
+    setSelectedActivity(activity);
+  };
+
   return (
     <>
-      <Navbar />
+      <Navbar openForm={HandleFormOpen} />
       <Container style={{ marginTop: "7em" }}>
         <ActivityDashboard
           activities={activities}
           selectedActivity={selectedActivity}
           selectActivity={HandleSelectActivity}
           cancelSelectActivity={HandleCancelActivity}
+          editMode={editMode}
+          closeForm={HandleFormClose}
+          openForm={HandleFormOpen}
+          createOrEdit={HandleCreatOrEditActivity}
         />
       </Container>
     </>
