@@ -16,7 +16,7 @@ export const ActivityDetails = ({
     <Card fluid>
       <Image src={`/assets/categoryImages/${activity.category}.jpg`} />
       <Card.Content>
-        <Card.Header>Matthew</Card.Header>
+        <Card.Header>{activity.title}</Card.Header>
         <Card.Meta>
           <span>{activity.date}</span>
         </Card.Meta>
