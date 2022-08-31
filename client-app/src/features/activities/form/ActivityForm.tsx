@@ -50,31 +50,32 @@ export const ActivityForm = ({
         <Form.TextArea
           placeholder="Description"
           value={activity.description}
-          name="title"
+          name="description"
           onChange={handleInputChange}
         />
         <Form.Input
           placeholder="Category"
           value={activity.category}
-          name="title"
+          name="category"
           onChange={handleInputChange}
         />
         <Form.Input
+          type="date"
           placeholder="Date"
           value={activity.date}
-          name="title"
+          name="date"
           onChange={handleInputChange}
         />
         <Form.Input
           placeholder="City"
           value={activity.city}
-          name="title"
+          name="city"
           onChange={handleInputChange}
         />
         <Form.Input
           placeholder="Venue"
           value={activity.venue}
-          name="title"
+          name="venue"
           onChange={handleInputChange}
         />
         <Button floated="right" positive type="submit" content="Submit" />

@@ -4,8 +4,8 @@ import { Activity } from "../../../app/models/activity";
 
 interface Props {
   activity: Activity;
-  cancelSelectActivity: (id: String) => void;
-  openForm: (id: String) => void;
+  cancelSelectActivity: (id: string) => void;
+  openForm: (id: string) => void;
 }
 export const ActivityDetails = ({
   activity,

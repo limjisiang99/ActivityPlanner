@@ -8,12 +8,13 @@ import { ActivityList } from "./ActivityList";
 interface Props {
   activities: Activity[];
   selectedActivity: Activity | undefined;
-  selectActivity: (id: String) => void;
-  cancelSelectActivity: (id: String) => void;
+  selectActivity: (id: string) => void;
+  cancelSelectActivity: (id: string) => void;
   editMode: boolean;
   closeForm: () => void;
-  openForm: (id: String) => void;
+  openForm: (id: string) => void;
   createOrEdit: (activity: Activity) => void;
+  deleteActivity: (id: string) => void;
 }
 export const ActivityDashboard = ({
   activities,
@@ -24,11 +25,16 @@ export const ActivityDashboard = ({
   closeForm,
   openForm,
   createOrEdit,
+  deleteActivity,
 }: Props) => {
   return (
     <Grid>
       <Grid.Column width="10">
-        <ActivityList activities={activities} selectActivity={selectActivity} />
+        <ActivityList
+          activities={activities}
+          selectActivity={selectActivity}
+          deleteActivity={deleteActivity}
+        />
       </Grid.Column>
 
       <Grid.Column width="6">
