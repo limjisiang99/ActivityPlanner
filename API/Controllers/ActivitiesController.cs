@@ -1,8 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Persistence;
 using Domain;
-using Microsoft.EntityFrameworkCore;
-using API.Controllers;
 using Application.Activities;
 
 
